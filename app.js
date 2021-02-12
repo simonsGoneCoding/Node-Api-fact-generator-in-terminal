@@ -7,7 +7,7 @@ const colors = require("colors");
 colors.enable();
 
 //get year from terminal
-const year = process.argv[2];
+const year = process.argv[2] || Math.floor(Math.random() * 2022);
 
 //fetch from numbers.api
 fetch(`http://numbersapi.com/${year}/year?json`)
