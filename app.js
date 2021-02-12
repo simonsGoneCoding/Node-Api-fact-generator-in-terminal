@@ -1,16 +1,20 @@
-//connected with numbersapi.com
-// http://numbersapi.com/random/year?json
+// http://numbersapi.com/${number}/${type}?json
 
 const fetch = require("node-fetch");
 //npm package enabling coloring terminal messeges
 const colors = require("colors");
 colors.enable();
 
-//get year from terminal
-const year = process.argv[2] || Math.floor(Math.random() * 2022);
+const helper = require("./helperFunction");
+
+helper.determineType();
+
+const number = helper.number;
+const type = helper.type;
 
 //fetch from numbers.api
-fetch(`http://numbersapi.com/${year}/year?json`)
+
+fetch(`http://numbersapi.com/${number}/${type}?json`)
   .then((response) => {
     if (response.ok) {
       return response.json();
